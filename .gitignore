@@ -1,0 +1,7 @@
+*.swp
+/NP/Unicode.hi
+/NP/Unicode.o
+/genXCompose.hi
+/genXCompose.o
+/genXCompose
+/.XCompose
