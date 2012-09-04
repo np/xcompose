@@ -454,6 +454,7 @@ circledChars =
   [("oo","°")
   ,("o^","°")
   ,("ob","●")
+  ,("op","∙")
   ,("ow","○")
   ,("ov","⎉")
   ,("o..","◌")
@@ -587,7 +588,7 @@ superscripts = zipscripts '^' -- NOTE that qCFQSVXYZ are missing
   -- is '\7471' a superscript C ?
 
 {-
- ∣ ⋆ ⁺ ∙ ⁻ • ✶ ≺ ″ ≳ ≲ ◁ ∗ ≰ ‿ ⊴ ≮ □ ⇛ ⊸ ≯
+ ∣ ⋆ ⁺  ⁻ • ✶ ≺ ″ ≳ ≲ ◁ ∗ ≰ ‿ ⊴ ≮ □ ⇛ ⊸ ≯
  ↛ ⋐ ⁆ ⁅ ϕ ◂ ≴ ≁ ⑵ ⑴  ̂ ≻ ► ∔ ▶ ≛ ⦈ ⦇ ⑶ ⋃ ⋂ ≵ ½ ’ —
  ∁ Μ ı
 
