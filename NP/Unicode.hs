@@ -1,5 +1,6 @@
 module NP.Unicode (greek, symbols, subscripts, superscripts, checkAmbs, disamb) where
 
+import Data.Char (toUpper)
 import Data.List (isPrefixOf)
 import Control.Applicative
 
@@ -58,24 +59,41 @@ greekData = [(Just 'a', "alpha", "α")
 
 accents :: [(String,String)]
 accents = concat
-  [a 'a' 'á' 'à' 'â' 'ä' 'ã' 'å' ' '
-  ,a 'c' 'ć' ' ' 'ĉ' ' ' ' ' ' ' 'ç'
-  ,a 'e' 'é' 'è' 'ê' 'ë' ' ' ' ' ' '
-  ,a 'i' 'í' 'ì' 'î' 'ï' 'ĩ' ' ' ' '
-  ,a 'n' 'ń' ' ' ' ' ' ' 'ñ' ' ' 'ņ'
-  ,a 'o' 'ó' 'ò' 'ô' 'ö' 'õ' ' ' ' '
-  ,a 'u' 'ú' 'ù' 'û' 'ü' ' ' ' ' ' '
-  ,a 'y' 'ý' ' ' 'ŷ' 'ÿ' ' ' ' ' ' '
+  [a "aáàâäãå ȧ"
+  ,a "b       ḃ"
+  ,a "cć ĉ   çċ"
+  ,a "d       ḋ"
+  ,a "eéèêë   ė"
+  ,a "f       ḟ"
+  ,a "g       ġ"
+  ,a "iíìîïĩ   "
+  ,a "h       ḣ"
+  ,a "m       ṁ"
+  ,a "nń   ñ ņṅ"
+  ,a "oóòôöõ  ȯ"
+  ,a "p       ṗ"
+  ,a "r       ṙ"
+  ,a "s       ṡ"
+  ,a "t       ṫ"
+  ,a "uúùûü    "
+  ,a "w       ẇ"
+  ,a "x       ẋ"
+  ,a "yý ŷÿ   ẏ"
+  ,a "z       ż"
   ]
-  where a k acute agrave acircum adiar atild aring aced =
-          filter ((/=" ").snd)
+  where a [k, acute, agrave, acircum, adiar, atild, aring, aced, adot] =
+          concat
           [b 'e' acute
           ,b '`' agrave
           ,b 'i' acircum
           ,b 'u' adiar
           ,b '~' atild
           ,b 'o' aring
-          ,b ',' aced] where b p l = ([p,k],[l])
+          ,b ',' aced
+          ,b '.' adot
+          ] where c p k l = ([p,k],[l])
+                  b _ ' ' = []
+                  b p l   = [c p k l, c p (toUpper k) (toUpper l)]
 
 parens :: [((String,String),(String,String))]
 parens =
@@ -316,7 +334,6 @@ symbols =
  ,("e=","€") -- alternatives =C =c E= =E =e
  ,("L-","£") -- alternatives -L
  ,("Y=","¥") -- alternatives =Y
- ,(".x","¤") -- currency sign
  ,("x.","¤") -- currency sign
 
 {-
