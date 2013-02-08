@@ -2,7 +2,6 @@
 import NP.Unicode
 import Data.Char
 import Data.List
-import qualified System.IO.UTF8 as U8
 
 genLine :: String -> String -> String
 genLine name s = "<Multi_key> " ++ keysFromString name ++ " : \"" ++ s ++ "\""
@@ -64,7 +63,5 @@ disambMore = filter ((/= "fake") . snd) . disamb . ((".>","fake"):)
 main :: IO ()
 main = do
   let static = ""
-  -- Uncomment the following line if you want a base static configuration.
-  -- static <- U8.readFile "usr-share-X11-locale-en_US.UTF-8-Compose"
-  U8.writeFile ".XCompose" (txt ++ static)
+  writeFile ".XCompose" (txt ++ static)
   where txt = genLines . disambMore $ greek ++ symbols ++ subscripts ++ superscripts
