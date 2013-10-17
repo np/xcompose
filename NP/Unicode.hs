@@ -475,6 +475,7 @@ c/ "¢" # CENT SIGN
 
   -- r for reversed
   ("rG","⅁")
+ ,("r&","⅋")
  ]
 
 circledChars :: [(String,String)]

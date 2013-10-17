@@ -51,12 +51,13 @@ keyFromCharData =
   ,('←',  "Left")
   ,('↑',  "Up")
   ,('↓',  "Down")
+  ,('&',  "ampersand")
   ]
 
 keyFromChar :: Char -> String
 keyFromChar c | isAscii c && isAlphaNum c          = ['<',c,'>']
               | Just s <- lookup c keyFromCharData = '<' : s ++ ">"
-              | otherwise                          = error $ "keyFromChar: `" ++ c : "' (" ++ show (ord c) ++ ")"
+              | otherwise                          = error $ "genXCompose.keyFromChar: incomplete table, unexpected `" ++ c : "' (" ++ show (ord c) ++ ")"
 
 disambMore = filter ((/= "fake") . snd) . disamb . ((".>","fake"):)
 
