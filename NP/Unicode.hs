@@ -335,6 +335,12 @@ symbols =
  ,("d5", "⚄")
  ,("d6", "⚅")
  ,("tm", "™")
+ ,("Ro", "✊") -- rock
+ ,("RO", "✊") -- rock
+ ,("Pa", "✋") -- paper
+ ,("PA", "✋") -- paper
+ ,("Sc", "✌") -- scissors
+ ,("SC", "✌") -- scissors
  ,("rt", "ʇ") -- r for reversed
  ,("rh", "ɥ") -- r for reversed
  ,("re", "ǝ") -- r for reversed
