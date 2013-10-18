@@ -142,6 +142,7 @@ symbols =
  ,("na", "∇") -- "na"bla
  ,("rgD", "∇") -- reversed Δ
  ,("r'D", "∇") -- reversed Δ
+ ,("sum", "∑") -- sum is different from sigma Σ
 
  -- operators
  ,("<|","◃")
