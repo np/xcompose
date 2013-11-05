@@ -315,6 +315,7 @@ symbols =
  ,("Cut","✂")
  ,("Pen","✎")
  ,("Tick","✓")
+ ,("da","†") -- da(gger)
  ,("micro","µ") -- different than mu:μ
  ,("os", "§")
  ,("so", "§")
