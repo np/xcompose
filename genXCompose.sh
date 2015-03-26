@@ -34,9 +34,9 @@ link(){
 }
 # }}}
 
-if [ -e /usr/share/X11/locale/en_US.UTF-8/Compose -a -x /usr/bin/ghc ]; then
+if [ -x "$XMONAD_GHC" ]; then
   echo 'Rebuilding XCompose (the generator)...'
-  ghc --make -O2 genXCompose.hs
+  "$XMONAD_GHC" --make -O2 genXCompose.hs
   echo Running genXCompose...
   ./genXCompose "$@"
   link .XCompose ~/.XCompose
