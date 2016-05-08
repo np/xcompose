@@ -1,4 +1,4 @@
-module NP.Unicode (greek, symbols, subscripts, superscripts, checkAmbs, disamb) where
+module NP.Unicode (greek, futhark, symbols, subscripts, superscripts, checkAmbs, disamb) where
 
 import Data.Char (toUpper)
 import Data.List (isPrefixOf)
@@ -56,6 +56,48 @@ greekData = [(Just 'a', "alpha", "α")
             ,(Just 'w', "omega", "ω")
             ,(Just 'O', "Omega", "Ω")
             ]
+
+-- | Elder Futhark runes
+futhark :: [(String, String)]
+futhark = [(name, unicode) | (_,name,unicode) <- futharkData] ++
+        [ ([leading,shorthand],unicode)
+        | (Just shorthand,_,unicode) <- futharkData
+        , leading                    <- ['\'', 'f'] ]
+
+-- (shorthand, name, unicode)
+futharkData :: [(Maybe Char, String, String)]
+futharkData = [ yes 'f' "fehu" "ᚠ"
+              , yes 'u' "uruz" "ᚢ"
+              , yes 'T' "thuriaz" "ᚦ" -- thorn, is a th
+              , no "thorn" "ᚦ" -- old english name for this letter
+              , yes 'a' "ansuz" "ᚨ"
+              , yes 'r' "raido" "ᚱ"
+              , yes 'k' "kaunan" "ᚲ"
+              , yes 'g' "gebo" "ᚷ"
+              , yes 'w' "wunjo" "ᚹ"
+              , no "wynn" "ᚹ" -- old english name
+              , yes 'h' "hagalaz" "ᚺ"
+              , yes 'n' "naudiz" "ᚾ"
+              , yes 'i' "isaz" "ᛁ"
+              , yes 'j' "jera" "ᛃ"
+              , yes 'I' "ihwaz" "ᛇ" -- similar to ï
+              , yes 'E' "eiwaz" "ᛇ" -- similar so æ, same rune as above just different name
+              , yes 'p' "pertho" "ᛈ"
+              , yes 'z' "algiz" "ᛉ"
+              , yes 's' "sowilo" "ᛊ"
+              , yes 't' "teiwaz" "ᛏ"
+              , yes 'b' "berkanan" "ᛒ"
+              , yes 'e' "ehwaz" "ᛖ"
+              , yes 'm' "mannaz" "ᛗ"
+              , yes 'l' "laguz" "ᛚ"
+              , yes 'N' "ingwaz" "ᛜ" -- this is a ng-sound
+              , yes 'G' "ing" "ᛝ" --old enghlish ingwaz, much cooler
+              , yes 'o' "othlia" "ᛟ"
+              , yes 'd' "dagaz" "ᛞ"
+              ]
+  where
+    yes a b c = (Just a, b, c)
+    no a b = (Nothing, a, b)
 
 accents :: [(String,String)]
 accents = concat
