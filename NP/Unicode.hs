@@ -60,9 +60,9 @@ greekData = [(Just 'a', "alpha", "α")
 -- | Elder Futhark runes
 futhark :: [(String, String)]
 futhark = [(name, unicode) | (_,name,unicode) <- futharkData] ++
-        [ ([leading,shorthand],unicode)
+        [ (['f',shorthand],unicode)
         | (Just shorthand,_,unicode) <- futharkData
-        , leading                    <- ['\'', 'f'] ]
+        ]
 
 -- (shorthand, name, unicode)
 futharkData :: [(Maybe Char, String, String)]
