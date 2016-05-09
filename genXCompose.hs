@@ -65,4 +65,4 @@ main :: IO ()
 main = do
   let static = ""
   writeFile ".XCompose" (txt ++ static)
-  where txt = genLines . disambMore $ greek ++ symbols ++ subscripts ++ superscripts
+  where txt = genLines . disambMore $ greek ++ futhark ++ symbols ++ subscripts ++ superscripts
